@@ -1,50 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gift from a Friend</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blessing Dua Website</title>
   <link rel="stylesheet" href="styles.css" />
-  <script src="script.js" defer></script>
-</head>
-<body>
-
-  <!-- ✨ Falling Stars Background -->
-  <div class="stars"></div>
-
-  <!-- 🌙 Banner GIF -->
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: black url("https://i.ibb.co/yXBtPhF/stars.gif") repeat top center;
+      color: white;
+      text-align: center;
+    }
+    .banner-img {
+      width: 100%;
+      max-width: 300px;
+      margin-top: 20px;
+    }
+    .gift-section, .duas-section {
+      margin: 20px auto;
+      padding: 20px;
+      background-color: rgba(0,0,0,0.7);
+      border-radius: 12px;
+      max-width: 500px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      width: 80%;
+      margin-top: 10px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #1abc9c;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .dua-option {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .dua-option label {
+      cursor: pointer;
+    }
+    .dua-option img {
+      height: 100px;
+      width: auto;
+      border: 2px solid white;
+      border-radius: 10px;
+    }
+  </style>
+</head><body>
   <div class="banner">
-    <img src="https://media.giphy.com/media/WoWm8YzFQJg5i/giphy.gif" alt="Blessing Banner" />
-  </div>
-
-  <!-- 🎁 Gift Invitation Section -->
-  <div class="gift-box">
-    <h1><span id="sender-name">Your Friend</span> sent you a Gift 🎁</h1>
-    <p>Enter your name to open the gift:</p>
-    <input type="text" id="receiverName" placeholder="Type your name..." />
-    <button onclick="openGift()">Open Gift</button>
-  </div>
-
-  <!-- ⏳ Loading + Dua Section -->
-  <div id="loading" style="display: none;">
-    <p>Preparing your gift...</p>
-    <p id="countdown">10</p>
-  </div>
-
-  <div id="dua-section" style="display: none;">
-    <h2 id="personal-dua"></h2>
-    <img id="dua-gif" src="" alt="Dua Gif" />
-    <button onclick="chooseAnother()">Send Your Gift to Friend</button>
-  </div>
-
-  <!-- 📢 Google Ads Placeholder -->
-  <div class="adsense">[Google Ad]</div>
-
-  <!-- 🎓 Donation Button -->
-  <div class="donation">
-    <p>Support Education for Poor Children</p>
-    <button onclick="alert('Donation Feature Coming Soon!')">Donate Now</button>
-  </div>
-
-</body>
-</html>
+    <img src="https://raw.githubusercontent.com/mis693/blessing-dua-website/main/public/islamic-animation.gif" alt="Banner" class="banner-img" />
+  </div>  <div class="gift-section">
+    <h2>🎁 Ek Tohfa Aapke Naam</h2>
+    <p>Apna naam likhiye aur apni dua hasil kijiye:</p>
+    <input type="text" id="receiverName" placeholder="Type your name" />
+    <button onclick="generateDua()">Open Your Gift</button>
+  </div>  <div class="duas-section">
+    <h2>Select a Dua</h2>
+    <div class="dua-option">
+      <label><input type="radio" name="dua" value="1" /><img src="https://raw.githubusercontent.com/mis693/blessing-dua-website/main/public/dua1.gif" alt="Dua 1" /></label>
+      <label><input type="radio" name="dua" value="2" /><img src="https://raw.githubusercontent.com/mis693/blessing-dua-website/main/public/dua2.gif" alt="Dua 2" /></label>
+      <label><input type="radio" name="dua" value="3" /><img src="https://raw.githubusercontent.com/mis693/blessing-dua-website/main/public/dua3.gif" alt="Dua 3" /></label>
+      <label><input type="radio" name="dua" value="4" /><img src="https://raw.githubusercontent.com/mis693/blessing-dua-website/main/public/dua4.gif" alt="Dua 4" /></label>
+      <label><input type="radio" name="dua" value="5" /><img src="https://raw.githubusercontent.com/mis693/blessing-dua-website/main/public/dua5.gif" alt="Dua 5" /></label>
+      <label><input type="radio" name="dua" value="6" /><img src="https://raw.githubusercontent.com/mis693/blessing-dua-website/main/public/dua6.gif" alt="Dua 6" /></label>
+    </div>
+  </div>  <script>
+    function generateDua() {
+      const name = document.getElementById("receiverName").value.trim();
+      const selected = document.querySelector('input[name="dua"]:checked');
+      if (!name || !selected) {
+        alert("Please enter your name and select a dua");
+        return;
+      }
+      const duaNum = selected.value;
+      const duaText = `Ya Allah, ${name} ki har dua qubool farma. Har mushkil aasan ho, har manzil asaan ho. Ameen.`;
+      alert(duaText);
+    }
+  </script></body></html>
