@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: black;
+  color: white;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.stars {
+  background: url('https://media.giphy.com/media/3o7qE1YN7aBOFPRw8E/giphy.gif') repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.banner img {
+  width: 200px;
+  margin-top: 20px;
+}
+
+.gift-box, #loading, #dua-section, .donation {
+  margin-top: 30px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  width: 80%;
+  max-width: 300px;
+  margin: 10px 0;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.adsense {
+  background: #222;
+  margin-top: 40px;
+  padding: 10px;
+  font-style: italic;
+}
