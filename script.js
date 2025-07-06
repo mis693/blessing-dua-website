@@ -1,68 +1,25 @@
-function startGift() {
-  const name = document.getElementById("receiverName").value.trim();
-  const selected = document.querySelector('input[name="dua"]:checked');
-  if (!name || !selected) {
-    alert("Please enter your name and select a dua");
-    return;
-  }
-
-  document.getElementById("mainBox").style.display = "none";
-  document.getElementById("loading").style.display = "block";
-
-  let seconds = 10;
-  const countdown = setInterval(() => {
-    document.getElementById("countdown").innerText = seconds + "s";
-    seconds--;
-    if (seconds < 0) {
-      clearInterval(countdown);
-      showDua(name, selected.value);
-    }
-  }, 1000);
-}
-
-function showDua(name, index) {
-  document.getElementById("loading").style.display = "none";
-
-  const romanDuas = [
-    `Ya Allah ${name} ki har khushi se nawaz de, uski har hajat poori kar.`,
-    `Ya Allah ${name} ke liye har mushkil ko asaan bana de.`,
-    `Ya Allah ${name} ko sehat, sukoon aur kamyabi de duniya aur aakhirat mein.`,
-  ];
-  const englishDuas = [
-    `May Allah bless ${name} with endless happiness and fulfill every wish.`,
-    `May Allah ease every hardship in ${name}'s life.`,
-    `May Allah grant ${name} success, peace, and good health always.`,
-  ];
-
-  const duaText = index < 3 ? romanDuas[index] : englishDuas[index - 3];
-  const gifName = `dua${parseInt(index) + 1}.gif`;
-
-  document.getElementById("gifImage").src = `public/${gifName}`;
-  document.getElementById("duaText").innerText = duaText;
-  document.getElementById("duaBox").style.display = "block";
-}
-
-function copyLink() {
-  const sender = document.getElementById("senderName").value.trim();
-  const selected = document.querySelector('input[name="dua"]:checked');
-  if (!sender || !selected) {
-    alert("Please enter your name and select a dua");
-    return;
-  }
-
-  const index = selected.value;
-  const url = `${window.location.origin}?sender=${encodeURIComponent(sender)}&dua=${index}`;
-  navigator.clipboard.writeText(url);
-  alert("Link copied! Share on WhatsApp, Instagram, Facebook");
-}
-
-window.onload = function () {
-  const params = new URLSearchParams(window.location.search);
-  const sender = params.get("sender");
-  const duaIndex = params.get("dua");
-
-  if (sender && duaIndex !== null) {
-    document.getElementById("mainBox").style.display = "none";
-    showDua(sender, duaIndex);
-  }
-};
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blessing Gift - Receive</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ✨ Islamic Banner -->
+  <div class="banner">
+    <img src="public/islamic-animation.gif" alt="Banner" class="banner-img" />
+  </div>  <!-- 🎁 Gift Box Section -->  <div class="gift-section">
+    <h2><span id="senderName">Zeenat</span> ki taraf se ek tohfa ☕️</h2>
+    <p>Apna naam likhiye neeche:</p>
+    <input type="text" id="receiverName" placeholder="Type your name" />
+    <button onclick="openGift()">🏰 Open Your Gift</button>
+  </div>  <!-- ⏳ Loading & Dua Section (hidden initially) -->  <div id="loading" class="hidden">
+    <img src="public/loading.gif" alt="Loading..." class="loading-gif" />
+    <p>Gift khul raha hai... please wait <span id="countdown">10</span> seconds</p>
+  </div>  <div id="result" class="hidden">
+    <img src="public/dua1.gif" alt="Dua GIF" class="dua-gif" />
+    <p id="finalDua"></p>
+    <button onclick="goToSenderPage()">✨ Send Your Gift to Your Friends</button>
+  </div>  <!-- Footer Ad Placeholder -->  <div class="ad-block">[Google Ad Here]</div>  <script src="script.js"></script></body>
+</html>

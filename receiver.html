@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Receiving Your Gift...</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    #loadingSection {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+    #finalGift {
+      display: none;
+      margin-top: 30px;
+    }
+    #finalGift img {
+      width: 200px;
+      border-radius: 12px;
+    }
+    #finalGift p {
+      margin-top: 15px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <img src="public/islamic-animation.gif" alt="Banner" class="banner-img" />
+  </div>
+
+  <div class="gift-section">
+    <h2 id="receiverTitle">🎁 Aap ke liye ek tohfa...</h2>
+
+    <div id="loadingSection">
+      <p>Gift load ho raha hai...</p>
+      <p>⏳ <span id="countdown">10</span> seconds</p>
+    </div>
+
+    <div id="finalGift">
+      <img id="giftImage" src="" alt="Dua GIF" />
+      <p id="giftDua"></p>
+    </div>
+  </div>
+
+  <script>
+    const receiverName = localStorage.getItem("receiverName") || "Aap";
+    const senderName = localStorage.getItem("senderName") || "Kisi khas";
+    const selectedDua = localStorage.getItem("selectedDua") || "1";
+
+    document.getElementById("receiverTitle").innerText = `🎁 ${senderName} ki taraf se ek tohfa`;
+
+    let countdown = 10;
+    const countdownEl = document.getElementById("countdown");
+    const loadingSection = document.getElementById("loadingSection");
+    const finalGift = document.getElementById("finalGift");
+    const giftImage = document.getElementById("giftImage");
+    const giftDua = document.getElementById("giftDua");
+
+    const duaTexts = {
+      1: `Ya Allah, ${receiverName} ki har dua qubool farma. Har manzil asaan ho. Ameen.`,
+      2: `${receiverName}, Allah aapko sehat, barkat aur khushiyan ata farmaye.`,
+      3: `${receiverName}, har subah nayi roshni, har raat sukoon wali ho. Duaon mein yaad.`,
+      4: `Ya Allah, ${receiverName} ko duniya aur aakhirat mein kamiyabi de.`,
+      5: `${receiverName}, Allah aapko har gham se bachaaye aur har khushi se nawaze.`,
+      6: `Har mushkil asaan ho, har dua qubool ho ${receiverName} ke liye. Ameen.`
+    };
+
+    const duaGifs = {
+      1: "public/dua1.gif",
+      2: "public/dua2.gif",
+      3: "public/dua3.gif",
+      4: "public/dua4.gif",
+      5: "public/dua5.gif",
+      6: "public/dua6.gif"
+    };
+
+    const interval = setInterval(() => {
+      countdown--;
+      countdownEl.textContent = countdown;
+      if (countdown <= 0) {
+        clearInterval(interval);
+        loadingSection.style.display = "none";
+        finalGift.style.display = "block";
+        giftImage.src = duaGifs[selectedDua];
+        giftDua.textContent = duaTexts[selectedDua];
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

@@ -1,58 +1,115 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Blessing Dua Website</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Blessing Gift Generator</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: black url("https://i.ibb.co/yXBtPhF/stars.gif") repeat top center;
+      color: white;
+      text-align: center;
+    }
+    .banner-img {
+      width: 100%;
+      max-width: 400px;
+      margin-top: 20px;
+      border-radius: 12px;
+    }
+    .gift-section, .duas-section {
+      margin: 20px auto;
+      padding: 20px;
+      background-color: rgba(0,0,0,0.7);
+      border-radius: 12px;
+      max-width: 500px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      width: 80%;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #1abc9c;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .dua-option {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .dua-option label {
+      cursor: pointer;
+    }
+    .dua-option img {
+      height: 100px;
+      width: auto;
+      border: 2px solid white;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 <body>
   <div class="banner">
     <img src="public/islamic-animation.gif" alt="Banner" class="banner-img" />
   </div>
 
-  <div id="mainBox" class="gift-section">
-    <h2>🎁 Ek Tohfa Aapke Naam</h2>
-    <input type="text" id="receiverName" placeholder="Type your name to open this gift" />
-    <button onclick="startGift()">Open Your Gift</button>
-  </div>
-
-  <div id="loading" style="display:none;" class="gift-section">
-    <p>Gift loading... Please wait</p>
-    <p id="countdown">10s</p>
-  </div>
-
-  <div id="duaBox" style="display:none;" class="gift-section">
-    <img id="gifImage" src="" alt="Dua GIF" style="max-width:300px; border-radius:12px;" />
-    <p id="duaText" style="margin-top:15px; font-size:18px;"></p>
-    <hr>
-    <h3>Send this gift to your friend</h3>
-    <input type="text" id="senderName" placeholder="Your name"/>
-    <button onclick="copyLink()">Generate & Copy Link</button>
+  <div class="gift-section">
+    <h2 id="giftTitle">🎁 Apni taraf se ek gift bhejiye</h2>
+    <p>Sender ka naam:</p>
+    <input type="text" id="senderName" placeholder="Apna naam likhiye" />
   </div>
 
   <div class="duas-section">
-    <h2>Select a Dua</h2>
+    <h2>Choose a Blessing (Dua)</h2>
     <div class="dua-option">
-      <label><input type="radio" name="dua" value="0" /><img src="public/dua1.gif" alt="Dua 1" /></label>
-      <label><input type="radio" name="dua" value="1" /><img src="public/dua2.gif" alt="Dua 2" /></label>
-      <label><input type="radio" name="dua" value="2" /><img src="public/dua3.gif" alt="Dua 3" /></label>
-      <label><input type="radio" name="dua" value="3" /><img src="public/dua4.gif" alt="Dua 4" /></label>
-      <label><input type="radio" name="dua" value="4" /><img src="public/dua5.gif" alt="Dua 5" /></label>
-      <label><input type="radio" name="dua" value="5" /><img src="public/dua6.gif" alt="Dua 6" /></label>
+      <label><input type="radio" name="dua" value="1" /><img src="public/dua1.gif" alt="Dua 1" /></label>
+      <label><input type="radio" name="dua" value="2" /><img src="public/dua2.gif" alt="Dua 2" /></label>
+      <label><input type="radio" name="dua" value="3" /><img src="public/dua3.gif" alt="Dua 3" /></label>
+      <label><input type="radio" name="dua" value="4" /><img src="public/dua4.gif" alt="Dua 4" /></label>
+      <label><input type="radio" name="dua" value="5" /><img src="public/dua5.gif" alt="Dua 5" /></label>
+      <label><input type="radio" name="dua" value="6" /><img src="public/dua6.gif" alt="Dua 6" /></label>
     </div>
+
+    <p style="margin-top: 20px;">Receiver ka naam:</p>
+    <input type="text" id="receiverName" placeholder="Receiver ka naam" />
+    <button onclick="generateGiftLink()">🎁 Generate Gift Link</button>
   </div>
 
-  <!-- Google Ads Placeholder -->
-  <div style="margin: 30px auto; text-align:center;">
-    <p>[Google Ad Here]</p>
-  </div>
+  <script>
+    function generateGiftLink() {
+      const senderName = document.getElementById("senderName").value.trim();
+      const receiverName = document.getElementById("receiverName").value.trim();
+      const selected = document.querySelector('input[name="dua"]:checked');
 
-  <!-- Donation Button -->
-  <div style="text-align:center; margin:20px;">
-    <button onclick="alert('Thank you for supporting children education!')">Donate for Orphan Education</button>
-  </div>
+      if (!senderName || !receiverName || !selected) {
+        alert("Please fill all fields and select a dua.");
+        return;
+      }
 
-  <script src="script.js"></script>
+      const duaNum = selected.value;
+
+      // Save to localStorage
+      localStorage.setItem("senderName", senderName);
+      localStorage.setItem("receiverName", receiverName);
+      localStorage.setItem("selectedDua", duaNum);
+
+      // Redirect to receiver page
+      window.location.href = "receiver.html";
+    }
+  </script>
 </body>
 </html>
