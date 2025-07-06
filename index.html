@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gift from a Friend</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- ✨ Falling Stars Background -->
+  <div class="stars"></div>
+
+  <!-- 🌙 Banner GIF -->
+  <div class="banner">
+    <img src="https://media.giphy.com/media/WoWm8YzFQJg5i/giphy.gif" alt="Blessing Banner" />
+  </div>
+
+  <!-- 🎁 Gift Invitation Section -->
+  <div class="gift-box">
+    <h1><span id="sender-name">Your Friend</span> sent you a Gift 🎁</h1>
+    <p>Enter your name to open the gift:</p>
+    <input type="text" id="receiverName" placeholder="Type your name..." />
+    <button onclick="openGift()">Open Gift</button>
+  </div>
+
+  <!-- ⏳ Loading + Dua Section -->
+  <div id="loading" style="display: none;">
+    <p>Preparing your gift...</p>
+    <p id="countdown">10</p>
+  </div>
+
+  <div id="dua-section" style="display: none;">
+    <h2 id="personal-dua"></h2>
+    <img id="dua-gif" src="" alt="Dua Gif" />
+    <button onclick="chooseAnother()">Send Your Gift to Friend</button>
+  </div>
+
+  <!-- 📢 Google Ads Placeholder -->
+  <div class="adsense">[Google Ad]</div>
+
+  <!-- 🎓 Donation Button -->
+  <div class="donation">
+    <p>Support Education for Poor Children</p>
+    <button onclick="alert('Donation Feature Coming Soon!')">Donate Now</button>
+  </div>
+
+</body>
+</html>
