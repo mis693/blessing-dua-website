@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎁 Apna Tohfa Banayen</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="public/islamic-animation.gif" type="image/gif">
+</head>
+<body>
+    <div class="background-stars"></div>
+    <div class="container sender-page">
+        <h1>Send Your Blessing Gift!</h1>
+        <div class="input-group">
+            <label for="senderNameInput">Your Name:</label>
+            <input type="text" id="senderNameInput" placeholder="Enter your name">
+        </div>
+
+        <h2>Choose a Dua:</h2>
+        <div class="dua-options">
+            <div class="dua-card" data-dua-id="1">
+                <img src="public/dua1.gif" alt="Dua 1" class="dua-preview">
+                <p>"Ya Allah, [name] ki har dua qubool kar, uski zindagi mein sirf khushiyan bhar de. Ameen."</p>
+            </div>
+            <div class="dua-card" data-dua-id="2">
+                <img src="public/dua2.gif" alt="Dua 2" class="dua-preview">
+                <p>"Ilahi [name] ko har imtehaan mein kaamyabi de, uska har din barkat wala ho."</p>
+            </div>
+            <div class="dua-card" data-dua-id="3">
+                <img src="public/dua3.gif" alt="Dua 3" class="dua-preview">
+                <p>"Ya Rab, [name] aur uske ghar walon ko sehat, sukoon aur kamiyabi se nawaz."</p>
+            </div>
+            <div class="dua-card" data-dua-id="4">
+                <img src="public/dua4.gif" alt="Dua 4" class="dua-preview">
+                <p>"May Allah bless [name] with endless peace, success, and answered prayers. Ameen."</p>
+            </div>
+            <div class="dua-card" data-dua-id="5">
+                <img src="public/dua5.gif" alt="Dua 5" class="dua-preview">
+                <p>"O Allah, grant [name] strength, happiness, and mercy in every step of life."</p>
+            </div>
+            <div class="dua-card" data-dua-id="6">
+                <img src="public/dua6.gif" alt="Dua 6" class="dua-preview">
+                <p>"Bless [name] with a heart full of gratitude and a life full of blessings."</p>
+            </div>
+        </div>
+
+        <button id="generateLinkButton">Generate Link</button>
+
+        <div id="generatedLinkSection" class="generated-link-section">
+            <p>Share this link:</p>
+            <input type="text" id="generatedLink" readonly>
+            <button id="copyLinkButton">Copy Link</button>
+            <div class="share-options">
+                <a id="whatsappShare" href="#" target="_blank" class="share-btn whatsapp">WhatsApp</a>
+                <a id="facebookShare" href="#" target="_blank" class="share-btn facebook">Facebook</a>
+                <a id="instagramShare" href="#" target="_blank" class="share-btn instagram">Instagram</a>
+            </div>
+        </div>
+
+        <div class="footer-ads-donations">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx" crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+                 data-ad-slot="xxxxxxxxxx"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            <button class="donate-button" onclick="window.open('YOUR_DONATION_LINK_HERE', '_blank')">Donate for Poor Children Education</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
